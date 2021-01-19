@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <title>Simulátor assembleru</title>
+        <!--<script src="/static/jquery.min.js"></script>-->
+        <style type="text/css">
+            * { box-sizing: border-box; }
+            html, body { padding: 0; margin: 0; width: 100%; height: 100%; }
+            form { width: 100%; height: 100%; }
+            #code-box {
+                width: 60%;
+                height: 100%;
+                float: left;
+            }
+            #out-box {
+                width: 40%;
+                max-width: 40%;
+                max-height: 100%;
+                float: left;
+                overflow: scroll;
+            }
+            #out-pad {
+                padding: 1em;
+            }
+            #code-wrap {
+                width: 100%;
+                height: calc(100% - 2.5em);
+            }
+            #code {
+                width: 100%;
+                height: 100%;
+                display: block;
+                padding: 5px;
+                background-color: #111111;
+                color: #FFFFFF;
+            }
+            #run-wrap {
+                width: 100%;
+                height: 2.5em;
+            }
+            textarea, button, div, form, html, body {
+                margin: 0;
+                padding: 0;
+            }
+            #run {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+            #out {
+                white-space: pre-wrap;
+                max-width: 100%;
+            }
+            .err {
+                font-weight: bold;
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="code-box">
+            <form action="#" method="post">
+                <div id="run-wrap"><button id="run" type="submit">Spustit</button></div>
+                <div id="code-wrap"><textarea name="code" id="code" spellcheck="false">@!code!@</textarea></div>
+            </form>
+        </div>
+        <div id="out-box">
+            <div id="out-pad">
+            <!--(if state=='compile-fail')-->
+            <div class="err">Chyba při překladu</div>
+            <!--(elif state=='run-fail')-->
+            <div class="err">Chyba při běhu</div>
+            <!--(end)-->
+            <!--(if out)-->
+                <pre id="out">@!out!@</pre>
+            <!--(end)-->
+            <!--(if regs)-->
+                <table id="regs">
+                    <thead>
+                        <th>Registr</th>
+                        <th>Bezznaménkově</th>
+                        <th>Znaménkově</th>
+                        <th>Šestnáctkově</th>
+                    </thead>
+                    <tbody>
+                        <!--(for reg,val in regs.items())-->
+                            <tr>
+                                <td>@!reg!@</td>
+                                <!--(if val is None)-->
+                                    <td></td><td></td><td></td>
+                                <!--(else)-->
+                                    <td>@!val!@</td>
+                                    <td>@!(val - 2**31) if val > 2**31 else val!@</td>
+                                    <td>@!hex(val)!@</td>
+                                <!--(end)-->
+                            </tr>
+                        <!--(end)-->
+                    </tbody>
+                </table>
+            <!--(end)-->
+            </div>
+        </div>
+    </body>
+</html>
