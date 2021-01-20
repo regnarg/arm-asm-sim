@@ -1,3 +1,5 @@
+# arm-asm-sim
+
 A simple web-based ARM assembler simulator for educational purposes.
 
 User enters assembler code, it is compiled and run in in a sandbox.
@@ -7,7 +9,7 @@ That's pretty much it.
 
 Originally developed for [KSP][KSP], the Czech computer science seminar
 for high school students. If you speak Czech, you can learn about ARM
-assembly in our tutorail series: [part 1][], [part 2][], [part 3][], [part 4][].
+assembly in our tutorial series: [part 1][], [part 2][], [part 3][], [part 4][].
 
 [KSP]: https://ksp.mff.cuni.cz/
 [part 1]: https://ksp.mff.cuni.cz/h/ulohy/30/zadani1.html#task-30-1-7
@@ -16,7 +18,7 @@ assembly in our tutorail series: [part 1][], [part 2][], [part 3][], [part 4][].
 [part 4]: https://ksp.mff.cuni.cz/h/ulohy/30/zadani4.html#task-30-4-7
 
 
-# Installation & dependencies
+## Installation & dependencies
 
 Tested on Debian Buster. For other distros, adapt as needed.
 
